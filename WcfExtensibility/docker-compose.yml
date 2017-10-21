@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  clientapp:
+    image: clientapp
+    build:
+      context: .\CLientApp
+      dockerfile: Dockerfile
