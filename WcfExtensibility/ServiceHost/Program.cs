@@ -15,6 +15,7 @@ namespace ServiceHost
             using (var host = new System.ServiceModel.ServiceHost(typeof(PersonService)))
             {
                 host.Open();
+                Console.WriteLine("Kliknij cokowiek aby zamknąć");
                 Console.ReadLine();
             }
         }

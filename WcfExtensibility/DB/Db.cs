@@ -15,6 +15,9 @@ namespace DB
         public Db() : base("cs")
         {
             Database.SetInitializer<Db>(new MigrateDatabaseToLatestVersion<Db, DB.Migrations.Configuration>());
+            this.Configuration.ProxyCreationEnabled = true;
+            this.Configuration.LazyLoadingEnabled = true;
+           
         }
     }
 }

@@ -20,6 +20,9 @@ namespace Contracts
         Person Get(int personId);
 
         [OperationContract]
+        List<Person> GetAll();
+
+        [OperationContract]
         void Update(Person person);
     }
 }

@@ -1,0 +1,19 @@
+﻿@using CLientApp.Models
+@model CLientApp.Models.PersonListViewModel
+@{
+    ViewBag.Title = "Person";
+    
+}
+
+<table>
+    <tr>
+        <th>Imkie</th><th>Nazwisko</th><th>Wiek</th>
+    </tr>
+    @foreach (var person in Model.People)
+    {
+        <tr>
+            <td>@person.Name</td><td>@person.LastName</td><td>@person.Age</td>
+        </tr>
+    }
+</table>
+

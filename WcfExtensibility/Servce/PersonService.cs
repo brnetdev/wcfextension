@@ -51,5 +51,14 @@ namespace Service
                 db.SaveChanges();
             }
         }
+
+        public List<Person> GetAll()
+        {
+            using (var db = new Db())
+            {
+                var people = db.People;
+                return people.ToList(); ;
+            }
+        }
     }
 }

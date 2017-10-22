@@ -8,7 +8,7 @@ namespace CLientApp.Models
 {
     public class PersonListViewModel
     {
-        public List<Person> MyProperty { get; set; }
+        public List<Person> People { get; set; }
 
     }
 }
