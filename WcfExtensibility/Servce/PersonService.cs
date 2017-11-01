@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Contracts;
 using DB;
+using Service.Behaviors;
 
 namespace Service
 {
+    [FirstServiceBehavior]
     public class PersonService : IPersonService
     {
+        [FirstOperationBehavior]
         public void Add(Person person)
         {
             using (var db = new Db())
@@ -52,6 +55,7 @@ namespace Service
             }
         }
 
+        [FirstOperationBehavior]
         public List<Person> GetAll()
         {
             using (var db = new Db())

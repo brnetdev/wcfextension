@@ -4,16 +4,31 @@
     ViewBag.Title = "Person";
     
 }
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table table-condensed table-responsive table-striped">
+            <tr>
+                <th>Imkie</th>
+                <th>Nazwisko</th>
+                <th>Wiek</th>
+            </tr>
+            @foreach (var person in Model.People)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.LastName</td>
+                    <td>@person.Age</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="pull-right">
+            @Html.ActionLink((string)ViewBag.AddButtonText, (string)nameof(CLientApp.Controllers.PersonController.Add), "PersonController", new { @class = "btn btn-primary"  })
+        </div>
+    </div>
+</div>
 
-<table>
-    <tr>
-        <th>Imkie</th><th>Nazwisko</th><th>Wiek</th>
-    </tr>
-    @foreach (var person in Model.People)
-    {
-        <tr>
-            <td>@person.Name</td><td>@person.LastName</td><td>@person.Age</td>
-        </tr>
-    }
-</table>
 

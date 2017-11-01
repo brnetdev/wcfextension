@@ -14,17 +14,47 @@ namespace CLientApp.Controllers
         // GET: Person
         public ActionResult Index()
         {
+            var addButtonText = Resources.Index.AddPersonLabel;
+            ViewBag.AddButtonText = addButtonText;
+
             var personListVM = new PersonListViewModel();
             personListVM.People = new List<Contracts.Person>();
-            List<Person> peopleList = new List<Person>();
+            List<Person> peopleList;
             using (var factory = new ChannelFactory<IPersonService>("clientConf"))
             {
                 var personProxy = factory.CreateChannel();
                 peopleList = personProxy.GetAll();
                 personListVM.People.AddRange(peopleList);
-            }            
-            
+            }
+
             return View(personListVM);
+        }
+                
+        public ActionResult Add()
+        {
+
+            var person = new PersonAddViewModel();
+            return View(person);
+        }
+
+        [HttpPost]
+        public ActionResult Add(PersonAddViewModel vm)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return View(vm);
+            }
+            using (var factory = new ChannelFactory<IPersonService>("clientConf"))
+            {
+                var proxy = factory.CreateChannel();
+                proxy.Add(new Person
+                {
+                    Age = vm.Age,
+                    LastName = vm.LastName,
+                    Name = vm.Name
+                });
+            }
+            return RedirectToAction(nameof(PersonController.Index));
         }
     }
 }
